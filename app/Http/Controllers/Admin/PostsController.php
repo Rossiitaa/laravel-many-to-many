@@ -61,8 +61,6 @@ class PostsController extends Controller
         $newPost->fill($sentData);
         $newPost->save();
 
-        $newPost->create($sentData);
-
         return redirect()->route('admin.posts.index')->with('message', '"'.$sentData['title'].'" has been created');
     }
 
