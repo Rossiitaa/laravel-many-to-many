@@ -13,15 +13,15 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
         $tags = [
-            'game',
-            'sport',
-            'music',
+            'Game',
+            'Sport',
+            'Music',
             '2022',
-            'boolean',
-            'laravel',
+            'Boolean',
+            'Laravel',
             'LOL',
-            'apple',
-            'microsoft',
+            'Apple',
+            'Microsoft',
         ];
 
         foreach($tags as $tag) {

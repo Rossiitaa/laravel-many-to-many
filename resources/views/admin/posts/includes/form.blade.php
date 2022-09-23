@@ -51,7 +51,7 @@
     <div class="form-group mb-4">
         <label class="d-block">Tags</label>
         @foreach ($tags as $tag)
-            <span class="d-inline-block mr-3">
+            <span class="d-inline-block me-3">
                 <input type="checkbox" name="tags[]" id="tag-{{$tag->id}}" value="{{$tag->id}}"
                 @if($errors->any())
                     {{in_array($tag->id, old('tags', [])) ? 'checked' : ''}}

@@ -18,6 +18,7 @@
                         <th>Title</th>
                         <th>Date</th>
                         <th>Category</th>
+                        <th>Tags</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </thead>
