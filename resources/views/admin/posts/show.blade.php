@@ -11,6 +11,21 @@
                 <img src="{{ $post->image }}" class="w-50 align-self-center" alt="Post Image">
                 <p class="fw-bold pt-2">{{ $post->content }}</p>
                 <h3>Author: {{ $post->user->name }}</h3>
+                <p>Category:
+                    <span class="badge badge-pill p-2" style="background-color:{{ $post->category->color }}">
+                        {{ $post->category->name }}
+                    </span>
+                </p>
+                <p>
+                    Tags:
+                    <span class="badge badge-pill" style="background-color:{{ $post->category->color }}">
+                        @forelse ($post->tags as $tag)
+                            #{{$tag->name}}
+                        @empty
+                            #NoTags
+                        @endforelse 
+                    </span>
+                </p>
             </div>
             <div class="d-flex justify-content-center w-100">
                 <a href="{{ route("admin.posts.edit", $post->id) }}" class="btn btn-success me-3">Edit</a>

@@ -29,7 +29,7 @@
                                 <td>{{ $post->user->name }}</td>
                                 <td>{{ $post->date }}</td>
                                 <td>
-                                    <span class="badge badge-fill p-2" style="background-color:{{ $post->category->color }}">
+                                    <span class="badge badge-pill p-2" style="background-color:{{ $post->category->color }}">
                                         {{ $post->category->name }}
                                     </span>
                                 </td>

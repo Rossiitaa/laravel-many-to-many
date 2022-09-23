@@ -3,7 +3,6 @@
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
 
 
 class PostTagTableSeeder extends Seeder
@@ -13,13 +12,15 @@ class PostTagTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
         $posts = Post::all();
 
         foreach ($posts as $post) {
             $randomTags = Tag::inRandomOrder()->limit(3)->get();
-            $post->tags()->attach($randomTags);
+            foreach ($randomTags as $tag) {
+                $post->tags()->attach($tag->id);
+            }
         }
     }
 }
