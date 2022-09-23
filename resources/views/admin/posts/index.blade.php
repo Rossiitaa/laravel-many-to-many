@@ -13,13 +13,13 @@
             <div class="col-12">
                 <table class="table table-dark table-striped">
                     <thead>
-                        <td>ID</td>
-                        <td>Username</td>
-                        <td>Title</td>
-                        <td>Date</td>
-                        <td>Category</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </thead>
                     <tbody>
                         @forelse ($posts as $post)
@@ -32,6 +32,11 @@
                                     <span class="badge badge-pill p-2" style="background-color:{{ $post->category->color }}">
                                         {{ $post->category->name }}
                                     </span>
+                                </td>
+                                <td>
+                                    @foreach ($post->tags as $tag)
+                                        #{{ $tag->name }}  
+                                    @endforeach
                                 </td>
                                 </td>
                                 <td class="d-flex">

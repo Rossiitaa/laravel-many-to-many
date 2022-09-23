@@ -20,7 +20,7 @@
                     Tags:
                     <span class="badge badge-pill" style="background-color:{{ $post->category->color }}">
                         @forelse ($post->tags as $tag)
-                            #{{$tag->name}}
+                            #{{$tag->name}} 
                         @empty
                             #NoTags
                         @endforelse 

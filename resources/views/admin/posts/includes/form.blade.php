@@ -46,6 +46,22 @@
             {{$message}}
         </div>
         @enderror
+    </div>
+
+    <div class="form-group mb-4">
+        <label class="d-block">Tags</label>
+        @foreach ($tags as $tag)
+            <span class="d-inline-block mr-3">
+                <input type="checkbox" name="tags[]" id="tag-{{$tag->id}}" value="{{$tag->id}}"
+                @if($errors->any())
+                    {{in_array($tag->id, old('tags', [])) ? 'checked' : ''}}
+                @else
+                    {{$post->tags->contains($tag) ? 'checked' : '' }}
+                @endif>
+                <label for="tag-{{$tag->id}}">{{$tag->name}}</label>
+            </span>
+        @endforeach
+    </div>
 
     <div class="w-100 text-center">
         <button type="submit" class="btn btn-primary text-light">Submit</button>

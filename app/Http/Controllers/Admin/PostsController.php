@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -19,6 +20,7 @@ class PostsController extends Controller
         'content' => 'required|string',
         'image' => 'required|string|active_url',
         'category_id' => 'required|integer',
+        'tags' => 'required|exists:tags,id',
     ];
 
     /**
@@ -40,8 +42,9 @@ class PostsController extends Controller
     public function create()
     {
         $post = new Post();
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.posts.create', compact('post', 'categories'));
+        return view('admin.posts.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -60,6 +63,7 @@ class PostsController extends Controller
         $sentData['date'] = new DateTime();
         $newPost->fill($sentData);
         $newPost->save();
+        $newPost->tags()->sync($sentData['tags']);
 
         return redirect()->route('admin.posts.index')->with('message', '"'.$sentData['title'].'" has been created');
     }
@@ -86,7 +90,8 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($id);
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -103,6 +108,7 @@ class PostsController extends Controller
 
         $newPost = Post::findOrFail($id);
         $newPost->update($sentData);
+        $newPost->tags()->sync($sentData['tags']);
 
         return redirect()->route('admin.posts.index')->with('message', '"'.$sentData['title'].'" has been modified');
     }
