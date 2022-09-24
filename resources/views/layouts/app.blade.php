@@ -55,6 +55,12 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('admin.posts.create') ? 'active' : ''}}" href="{{ route('admin.posts.create') }}">Add New Post</a>
                             </li>
+                            <li class="nav-item px-4">
+                                <a class="nav-link {{ request()->routeIs('admin.posts.index') ? 'active' : ''}}" href="{{ route('admin.tags.index') }}">Tags</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('admin.posts.create') ? 'active' : ''}}" href="{{ route('admin.tags.create') }}">Add New Tags</a>
+                            </li>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
