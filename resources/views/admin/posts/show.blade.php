@@ -20,7 +20,7 @@
                     Tags:
                     <span class="badge badge-pill" style="background-color:{{ $post->category->color }}">
                         @forelse ($post->tags as $tag)
-                            #{{$tag->name}} 
+                            <a href="{{route('admin.tags.show', $tag->id)}}">#{{$tag->name}}</a>
                         @empty
                             #NoTags
                         @endforelse 
