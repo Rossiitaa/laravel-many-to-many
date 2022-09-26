@@ -7,7 +7,7 @@
         <h2 class="mb-3">Edit Post</h2>
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('admin.posts.update', $post->id) }}" method="POST">
+                <form action="{{ route('admin.posts.update', $post->id) }}" method="POST" enctype="multipart/from-data">
                     @csrf
                     @method('PUT')
 
