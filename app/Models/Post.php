@@ -12,7 +12,7 @@ class Post extends Model
         'title',
         'content',
         'date',
-        'image'
+        'image',
     );
 
     public function user() {

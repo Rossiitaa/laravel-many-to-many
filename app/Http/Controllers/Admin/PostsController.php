@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -18,9 +19,9 @@ class PostsController extends Controller
     protected $validationRules = [
         'title' => 'required|string|max:255|min:3',
         'content' => 'required|string',
-        'image' => 'required|string|active_url',
         'category_id' => 'required|integer',
         'tags' => 'required|exists:tags,id',
+        'image' => 'image|max:255|mimes:jpeg,jpg,png',
     ];
 
     /**
@@ -55,12 +56,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $validationData = $request->validate($this->validationRules);
+        $sentData = $request->validate($this->validationRules);
 
         $sentData = $request->all();
         $newPost = new Post;
         $sentData['user_id'] = Auth::id();
         $sentData['date'] = new DateTime();
+
+        $sentData['image'] = Storage::put('uploads', $sentData['image']);
+
         $newPost->fill($sentData);
         $newPost->save();
         $newPost->tags()->sync($sentData['tags']);
@@ -107,6 +111,8 @@ class PostsController extends Controller
         $sentData = $request->all();
 
         $newPost = Post::findOrFail($id);
+        $sentData['image'] = Storage::put('uploads', $sentData['image']);
+
         $newPost->update($sentData);
         $newPost->tags()->sync($sentData['tags']);
 

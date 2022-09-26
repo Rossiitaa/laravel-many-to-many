@@ -5,10 +5,10 @@
 @section("content")
     <div class="container">
         <div class="row">
-            <div class="col-12 post-card d-flex flex-column p-2 text-center">
+            <div class="col-12 d-flex flex-column p-2 text-center">
                 <h1>Title: {{ $post->title }}</h1>
                 <h5>Post Date: {{ $post->date }}</h5>
-                <img src="{{ $post->image }}" class="w-50 align-self-center" alt="Post Image">
+                <img src="{{ asset('storage/' . $post->image) }}" class="w-50 align-self-center" alt="Post Image">
                 <p class="fw-bold pt-2">{{ $post->content }}</p>
                 <h3>Author: {{ $post->user->name }}</h3>
                 <p>Category:

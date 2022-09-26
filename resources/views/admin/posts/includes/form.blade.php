@@ -22,12 +22,12 @@
     </div>
 
     <div class="form-group mb-2">
-        <label for="image">Image Url</label>
-        <input required name="image" type="text" class="form-control" id="image" placeholder="Enter image url"
+        <label for="image">Add Image</label>
+        <input required name="image" type="file" class="form-control" id="image"
             value="{{old('image', $post->image)}}">
         @error('image')
         <div class="alert alert-danger" role="alert">
-            {{$message}}
+            {{ $message }}
         </div>
         @enderror
     </div>

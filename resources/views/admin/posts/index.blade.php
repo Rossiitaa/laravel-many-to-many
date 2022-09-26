@@ -33,14 +33,14 @@
                                     <span class="badge badge-pill p-2" style="background-color:{{ $post->category->color }}">
                                         {{ $post->category->name }}
                                     </span>
-                                </td>
+                                </td> 
                                 <td>
                                     @foreach ($post->tags as $tag)
                                         #{{ $tag->name }}  
                                     @endforeach
                                 </td>
                                 </td>
-                                <td class="d-flex">
+                                <td>
                                     <a href="{{ route("admin.posts.edit", $post->id) }}" class="btn btn-sm btn-success">Edit</a>
                                 </td>
                                 <td>
